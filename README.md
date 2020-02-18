@@ -7,6 +7,15 @@ including IPv4/6, TCP, UDP, ICMPv4/6, IGMP and Raw, across a wide variety of
 interface types, and understands BPF filter logic in the same fashion as more
 common packet sniffing tools, such as tcpdump and snoop.
 
+## Compile Project
+
+```sh
+$ git clone https://github.com/umarudy/ngrep
+$ cd ngrep
+$ ./configure
+$ make
+$ sudo ./ngrep -x
+```
 
 ## What's New
 
