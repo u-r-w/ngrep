@@ -944,7 +944,7 @@ void dump_packet(struct pcap_pkthdr *h, u_char *p, uint8_t proto, unsigned char 
 
     if ((proto == IPPROTO_TCP || proto == IPPROTO_UDP) && (sport || dport) && (hdr_offset || frag_offset == 0))
 
-        printf("%s:%u -> %s:%u", ip_src, sport, ip_dst, dport);
+        printf("%s:%u -> %s:%u HELO", ip_src, sport, ip_dst, dport);
 
     else
 
@@ -1120,7 +1120,7 @@ void dump_formatted(unsigned char *data, uint32_t len, uint16_t mindex, uint16_t
                             j = 0;
 
         while (i < len) {
-            printf("  ");
+            // printf("  ");
 
             if (show_hex) {
                 for (j = 0; j < width; j++) {
@@ -1131,10 +1131,10 @@ void dump_formatted(unsigned char *data, uint32_t len, uint16_t mindex, uint16_t
 
                     if (i + j < len)
                         printf("%02x ", str[j]);
-                    else printf("   ");
+                    // else printf("   ");
 
-                    if ((j+1) % (width/2) == 0)
-                        printf("   ");
+                    // if ((j+1) % (width/2) == 0)
+                    //     printf("   ");
 
                     if (hiliting) {
                         hiliting = 0;
@@ -1143,27 +1143,29 @@ void dump_formatted(unsigned char *data, uint32_t len, uint16_t mindex, uint16_t
                 }
             }
 
-            for (j = 0; j < width; j++) {
-                if (should_hilite && mindex <= (i+j) && (i+j) < mindex + msize) {
-                    hiliting = 1;
-                    printf("%s", ANSI_hilite);
-                }
+            // -------- Edited by @umarudy for getting hexdump only 
+            // for (j = 0; j < width; j++) {
+            //     if (should_hilite && mindex <= (i+j) && (i+j) < mindex + msize) {
+            //         hiliting = 1;
+            //         printf("%s", ANSI_hilite);
+            //     }
 
-                if (i + j < len)
-                    printf("%c", isprint(str[j]) ? str[j] : nonprint_char);
-                else printf(" ");
+            //     if (i + j < len)
+            //         printf("%c", isprint(str[j]) ? str[j] : nonprint_char);
+            //     else printf(" ");
 
-                if (hiliting) {
-                    hiliting = 0;
-                    printf("%s", ANSI_off);
-                }
-            }
+            //     if (hiliting) {
+            //         hiliting = 0;
+            //         printf("%s", ANSI_off);
+            //     }
+            // }
 
             str += width;
             i   += j;
 
-            printf("\n");
+            // printf("\n");
         }
+        printf("\n");
     }
 }
 
