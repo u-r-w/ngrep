@@ -9,8 +9,10 @@ common packet sniffing tools, such as tcpdump and snoop.
 
 ## Compile Project
 
+Make sure pcap-dev is installed `sudo apt install libpcap-dev`
+
 ```sh
-$ git clone https://github.com/umarudy/ngrep
+$ git clone https://github.com/u-r-w/ngrep
 $ cd ngrep
 $ ./configure
 $ make
